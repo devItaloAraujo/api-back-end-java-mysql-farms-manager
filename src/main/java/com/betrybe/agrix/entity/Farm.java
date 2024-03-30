@@ -17,12 +17,12 @@ public class Farm {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
-  private Long size;
+  private Double size;
 
   public Farm() {
   }
 
-  public Farm(String name, Long size) {
+  public Farm(String name, Double size) {
     this.name = name;
     this.size = size;
   }
@@ -43,11 +43,11 @@ public class Farm {
     this.name = name;
   }
 
-  public Long getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public void setSize(Long size) {
+  public void setSize(Double size) {
     this.size = size;
   }
 }
