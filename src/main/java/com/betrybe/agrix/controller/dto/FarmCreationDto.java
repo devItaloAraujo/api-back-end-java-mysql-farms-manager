@@ -7,7 +7,15 @@ import com.betrybe.agrix.entity.Farm;
  */
 public record FarmCreationDto(String name, Double size) {
 
+  /**
+   * Converts the DTO to a Farm entity.
+   *
+   * @return the Farm entity.
+   */
   public Farm toEntity() {
-    return new Farm(name, size);
+    Farm farm = new Farm();
+    farm.setName(name);
+    farm.setSize(size);
+    return farm;
   }
 }

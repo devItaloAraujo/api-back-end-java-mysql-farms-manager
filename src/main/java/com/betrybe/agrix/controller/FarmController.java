@@ -1,6 +1,10 @@
 package com.betrybe.agrix.controller;
 
+import com.betrybe.agrix.controller.dto.CropCreationDto;
+import com.betrybe.agrix.controller.dto.CropDto;
 import com.betrybe.agrix.controller.dto.FarmCreationDto;
+import com.betrybe.agrix.controller.dto.FarmDto;
+import com.betrybe.agrix.entity.Crop;
 import com.betrybe.agrix.entity.Farm;
 import com.betrybe.agrix.service.FarmService;
 import com.betrybe.agrix.service.exception.FarmNotFoundException;
@@ -19,30 +23,49 @@ import org.springframework.web.bind.annotation.RestController;
  * Controller for the Farm entity.
  */
 @RestController
-@RequestMapping(value = "/farms")
+@RequestMapping("/farms")
 public class FarmController {
 
   private final FarmService farmService;
 
   @Autowired
   public FarmController(FarmService farmService) {
+
     this.farmService = farmService;
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public Farm createFarm(@RequestBody FarmCreationDto farmCreationDto) {
-    return farmService.create(farmCreationDto.toEntity());
+  public FarmDto createFarm(@RequestBody FarmCreationDto farmCreationDto) {
+    Farm createdFarm = farmService.create(farmCreationDto.toEntity());
+    return FarmDto.fromEntity(createdFarm);
   }
 
+  /**
+   * Returns a list of all farms.
+   *
+   * @return a list of all farms.
+   */
   @GetMapping
   @ResponseStatus(HttpStatus.OK)
-  public List<Farm> getAllFarms() {
-    return farmService.findAll();
+  public List<FarmDto> getAllFarms() {
+    List<Farm> farms = farmService.findAll();
+    return farms.stream()
+        .map(FarmDto::fromEntity)
+        .toList();
   }
 
   @GetMapping("/{id}")
-  public Farm getFarmById(@PathVariable Long id) throws FarmNotFoundException {
-    return farmService.findById(id);
+  public FarmDto getFarmById(@PathVariable Long id) throws FarmNotFoundException {
+    Farm farm = farmService.findById(id);
+    return FarmDto.fromEntity(farm);
+  }
+
+  @PostMapping("/{farmId}/crops")
+  @ResponseStatus(HttpStatus.CREATED)
+  public CropDto createCrop(@PathVariable Long farmId, @RequestBody CropCreationDto cropCreationDto)
+      throws FarmNotFoundException {
+    Crop crop = farmService.createCrop(farmId, cropCreationDto.toEntity());
+    return CropDto.fromEntity(crop);
   }
 }
