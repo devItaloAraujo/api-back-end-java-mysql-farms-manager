@@ -50,4 +50,9 @@ public class FarmService {
     return cropRepository.save(crop);
   }
 
+  public List<Crop> findCropsByFarmId(Long farmId) throws FarmNotFoundException {
+    Farm farm = findById(farmId);
+    return farm.getCrops();
+  }
+
 }

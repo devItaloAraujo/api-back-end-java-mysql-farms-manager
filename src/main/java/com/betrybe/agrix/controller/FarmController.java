@@ -68,4 +68,20 @@ public class FarmController {
     Crop crop = farmService.createCrop(farmId, cropCreationDto.toEntity());
     return CropDto.fromEntity(crop);
   }
+
+  /**
+   * Returns a list of all crops for a farm.
+   *
+   * @param farmId the farm id
+   * @return a list of all crops for a farm
+   * @throws FarmNotFoundException if the farm is not found
+   */
+  @GetMapping("/{farmId}/crops")
+  @ResponseStatus(HttpStatus.OK)
+  public List<CropDto> getCropsByFarmId(@PathVariable Long farmId) throws FarmNotFoundException {
+    List<Crop> crops = farmService.findCropsByFarmId(farmId);
+    return crops.stream()
+        .map(CropDto::fromEntity)
+        .toList();
+  }
 }
