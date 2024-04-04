@@ -1,5 +1,86 @@
 # API Back-End Java MySQL Farms Manager
+<details>
+   <summary>
+      [English]
+   </summary>
 
+## Description
+
+The API Back-End Java MySQL Farms Manager is a Java back-end application developed using the Spring ecosystem, specifically Spring Boot Web and Spring Data. This project is a RESTful API that manages farms and their crops, following a layered architecture to ensure separation of concerns and easy code maintenance.
+
+## Features
+
+- **Farm Creation**: Allows creating new farms with detailed information.
+- **Farm Listing**: Returns a list of all registered farms.
+- **Farm Query by ID**: Retrieves information of a specific farm based on its ID.
+- **Crop Creation**: Allows adding new crops to an existing farm.
+- **Crop Listing by Farm**: Returns a list of all crops associated with a specific farm based on its ID.
+
+## Technologies Used
+
+- Java
+- Spring Boot Web
+- Spring Data
+- MySQL
+- Docker
+- Maven
+
+## Getting Started
+
+To start the project locally, follow these steps:
+
+1. Make sure you have Docker installed on your machine.
+2. Clone this repository to a folder of your choice:
+
+   ```bash
+   git clone git@github.com:devItaloAraujo/api-back-end-java-mysql-farms-manager.git
+
+3. Navigate to the project directory:
+
+   ```bash
+   cd api-back-end-java-mysql-farms-manager
+4. Execute the following command to start the Docker containers:
+
+   ```bash
+   docker-compose up -d
+5. Wait until the containers are online.
+
+The API will be available at the endpoint http://localhost:8080/farms
+
+## Endpoints
+### Farms (/farms)
+**POST /farms:** Creates a new farm based on the data provided in the request body. Request body model:
+   ```json
+   {
+     "name": "Farm1",
+     "size": 6
+   }
+   ```
+
+**GET /farms:** Returns a list of all registered farms.
+
+**GET /farms/{id}:** Returns detailed information of a specific farm based on its ID.
+
+**POST /farms/{id}/crops**: Creates a new crop on the specified farm based on its ID and the data provided in the request body. Request body model:
+ ```json
+   {
+     "name": "VeggieCrop1",
+     "plantedArea": 2
+   }
+   ```
+
+### Crops (/crops)
+
+**GET /crops:** Returns a list of all registered crops.
+
+**GET /crops/{id}:**  Returns detailed information of a specific crop based on its ID.
+
+</details>
+<details>
+   <summary>
+ [Português]
+   </summary>
+   
 ## Descrição
 
 O API Back-End Java MySQL Farms Manager é uma aplicação back-end Java desenvolvida utilizando o ecossistema Spring, especificamente o Spring Boot Web e o Spring Data. Este projeto é uma API RESTful que gerencia fazendas e suas plantações, seguindo uma arquitetura em camadas para garantir a separação de escopos e a fácil manutenção do código.
@@ -21,7 +102,7 @@ O API Back-End Java MySQL Farms Manager é uma aplicação back-end Java desenvo
 - Docker
 - Maven
 
-## Começando
+## Rodando Localmente
 
 Para iniciar o projeto localmente, siga estas etapas:
 
@@ -69,3 +150,5 @@ A API estará disponível no endpoint http://localhost:8080/farms.
 **GET /crops:** Retorna uma lista de todas as plantações registradas.
 
 **GET /crops/{id}:** Retorna informações detalhadas de uma plantação específica com base em seu ID.
+
+</details>
