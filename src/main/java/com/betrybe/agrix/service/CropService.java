@@ -29,6 +29,13 @@ public class CropService {
     return cropRepository.findById(id).orElseThrow(CropNotFoundException::new);
   }
 
+  /**
+   * Find crops between two dates.
+   *
+   * @param start the start date
+   * @param end the end date
+   * @return the list of crops between the two dates
+   */
   public List<Crop> findCropsBetweenDates(String start, String end) {
     LocalDate startDate = LocalDate.parse(start);
     LocalDate endDate = LocalDate.parse(end);
