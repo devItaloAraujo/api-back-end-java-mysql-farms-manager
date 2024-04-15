@@ -15,6 +15,9 @@ The API Back-End Java MySQL Farms Manager is a Java back-end application develop
 - **Farm Query by ID**: Retrieves information of a specific farm based on its ID.
 - **Crop Creation**: Allows adding new crops to an existing farm.
 - **Crop Listing by Farm**: Returns a list of all crops associated with a specific farm based on its ID.
+- **Fertilizer Creation**: Allows creating new fertilizers.
+- **Fertilizer Listing**: Returns a list of all registered fertilizers.
+- **Fertilizer Query by ID**: Retrieves information of a specific fertilizer based on its ID.
 
 ## Technologies Used
 
@@ -75,6 +78,21 @@ The API will be available at the endpoint http://localhost:8080/farms
 
 **GET /crops/{id}:**  Returns detailed information of a specific crop based on its ID.
 
+### Fertilizers (/fertilizers)
+
+**POST /fertilizers:** Creates a new fertilizer based on the data provided in the request body. Example:
+```json
+   {
+     "name": "Compost",
+     "brand": "Home made",
+     "composition": "Organic Matter"
+   }
+   ```
+
+**GET /fertilizers:** Returns a list of all registered fertilizers.
+
+**GET /fertilizers/{id}:** Returns detailed information of a specific fertilizer based on its ID.
+
 </details>
 <details>
    <summary>
@@ -92,6 +110,9 @@ O API Back-End Java MySQL Farms Manager é uma aplicação back-end Java desenvo
 - **Consulta de Fazenda por ID**: Permite recuperar informações de uma fazenda específica com base em seu ID.
 - **Criação de Cultivos**: Permite adicionar novos cultivos a uma fazenda existente.
 - **Listagem de Cultivos por Fazenda**: Retorna uma lista de todos os cultivos associados a uma fazenda específica com base em seu ID.
+- **Criação de Fertilizantes**: Permite criar novos fertilizantes.
+- **Listagem de Fertilizantes**: Retorna uma lista de todos os fertilizantes registrados.
+- **Consulta de Fertilizante por ID**: Permite recuperar informações de um fertilizante específico com base em seu ID.
 
 ## Tecnologias Utilizadas
 
@@ -150,5 +171,20 @@ A API estará disponível no endpoint http://localhost:8080/farms.
 **GET /crops:** Retorna uma lista de todas as plantações registradas.
 
 **GET /crops/{id}:** Retorna informações detalhadas de uma plantação específica com base em seu ID.
+
+### Fertilizantes (/fertilizers)
+
+**POST /fertilizers:** Cria um novo fertilizante com base nos dados fornecidos no corpo da solicitação. Exemplo:
+ ```json
+   {
+     "name": "Compostagem",
+     "brand": "Feita em casa",
+     "composition": "Restos de alimentos"
+   }
+   ```
+
+**GET /fertilizers:** Retorna uma lista de todos os fertilizantes registrados.
+
+**GET /fertilizers/{id}:** Retorna informações detalhadas de um fertilizante específico com base em seu ID.
 
 </details>
